@@ -9,6 +9,16 @@ import org.apache.commons.io.FileUtils;
 public class Main {
 
 	public static void main(String[] args) {
+		String[] data = getInfo();
+		
+		QuestionCallback callback = null;
+		
+		saveFile(data[0], data[1], data[2], callback);
+		
+		
+	}
+
+	protected static String[] getInfo() {
 		String[] data = new String[3];
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Podaj nazwe");
@@ -17,12 +27,7 @@ public class Main {
 		data[1] = scanner.nextLine();
 		System.out.println("Podaj niepoprawny string:");
 		data[2] = scanner.nextLine();
-		
-		QuestionCallback callback = null;
-		
-		saveFile(data[0], data[1], data[2], callback);
-		
-		
+		return data;
 	}
 	
 	public static void saveFile(String name, String validString, String invalidString, QuestionCallback callback){
