@@ -1,6 +1,10 @@
 package pl.lodz.p.zad1.ind179640ind187824;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
+
+import org.apache.commons.io.FileUtils;
 
 public class Main {
 
@@ -22,6 +26,18 @@ public class Main {
 	}
 	
 	public static void saveFile(String name, String validString, String invalidString, QuestionCallback callback){
+		File file = new File(name);
+		
+		boolean success = true;
+		try {
+			FileUtils.writeStringToFile(file, "Hello World");
+		} catch (IOException e) {
+			
+			success = false;
+		}
+		
+		callback.checkSuccess(success);
+		
 		
 	}
 }
