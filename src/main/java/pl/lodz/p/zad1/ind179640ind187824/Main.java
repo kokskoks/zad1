@@ -13,5 +13,15 @@ public class Main {
 		data[1] = scanner.nextLine();
 		System.out.println("Podaj niepoprawny string:");
 		data[2] = scanner.nextLine();
+		
+		QuestionCallback callback = null;
+		
+		saveFile(data[0], data[1], data[2], callback);
+		
+		
+	}
+	
+	public static void saveFile(String name, String validString, String invalidString, QuestionCallback callback){
+		
 	}
 }
