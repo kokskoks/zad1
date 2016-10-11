@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class QuestionCallbackImpl implements QuestionCallback {
 
-	public boolean checkSuccess(boolean success) {
+	public boolean doRetry(boolean success) {
 		if (!success) {
 			Scanner scanner = new Scanner(System.in);
 			System.out.println("Czy chcesz zmienic sciezke i sprobowac jeszcze raz? (y/n)");
@@ -15,7 +15,7 @@ public class QuestionCallbackImpl implements QuestionCallback {
 				return false;
 			}
 		}
-		return true;
+		return false;
 	}
 
 }

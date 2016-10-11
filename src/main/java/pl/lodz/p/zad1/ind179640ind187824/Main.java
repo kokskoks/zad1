@@ -10,15 +10,15 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		boolean success = false;
+		boolean retry = false;
 		do {
 			String[] data = getInfo();
 			
 			QuestionCallback callback = new QuestionCallbackImpl();
 			
-			success = saveFile(data[0], data[1], data[2], callback);
+			retry = saveFile(data[0], data[1], data[2], callback);
 			
-		} while(success);
+		} while(retry);
 		
 		
 	}
@@ -41,12 +41,16 @@ public class Main {
 		boolean success = true;
 		try {
 			FileUtils.writeStringToFile(file, "Hello World");
+			System.out.println(validString);
 		} catch (IOException e) {
 			
 			success = false;
+			
+			System.out.println(invalidString);
 		}
 		
-		return callback.checkSuccess(success);
+		boolean newPathProvided = callback.doRetry(success);
+		return newPathProvided;
 		
 		
 	}
