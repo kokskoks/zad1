@@ -9,11 +9,16 @@ import org.apache.commons.io.FileUtils;
 public class Main {
 
 	public static void main(String[] args) {
-		String[] data = getInfo();
 		
-		QuestionCallback callback = null;
-		
-		saveFile(data[0], data[1], data[2], callback);
+		boolean success = false;
+		do {
+			String[] data = getInfo();
+			
+			QuestionCallback callback = new QuestionCallbackImpl();
+			
+			success = saveFile(data[0], data[1], data[2], callback);
+			
+		} while(success);
 		
 		
 	}
@@ -30,7 +35,7 @@ public class Main {
 		return data;
 	}
 	
-	public static void saveFile(String name, String validString, String invalidString, QuestionCallback callback){
+	public static boolean saveFile(String name, String validString, String invalidString, QuestionCallback callback){
 		File file = new File(name);
 		
 		boolean success = true;
@@ -41,7 +46,7 @@ public class Main {
 			success = false;
 		}
 		
-		callback.checkSuccess(success);
+		return callback.checkSuccess(success);
 		
 		
 	}
